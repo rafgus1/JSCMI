@@ -1,18 +1,55 @@
 <html>
 <head>
 <style>
-
-wygląd naszej gry
-
+body{
+	background-color: lightgreen;
+}
+.topBar{
+	background-color: darkgreen;
+	color: yellow;
+	font-size: 2em;
+}
+.kontener{
+	width: 80%;
+	height: 90%;
+	margin-left: 10%;
+	background-color: white;
+	overflow: hidden;
+}
+.przycisk{
+	background-color: red;
+	color: white;
+	font-size: 1.6em;
+	text-align: center;
+}
+.gracz{
+	position: absolute;
+	width: 100px;
+	height: 20px;
+	background-color: blue;
+	bottom: 10%;
+	left: 45%;
+}
 </style>
 </head>
 <body>
 
-główne elementy gry
+<div class="topBar">Punkty: 0</div>
+<div class="kontener">
+	<div class="przycisk">Start Gry</div>
+	<div class="gracz"></div>
+</div>
 
 <script>
-
-javascript obsługujący grę
+	const topBar=document.querySelector(".topBar");
+	const kontener=document.querySelector(".kontener");
+	const przycisk=document.querySelector(".przycisk");
+	const statek=document.querySelector(".gracz");
+	let gracz = {
+		speed : 5,
+		strzal : false,
+		gameOver : false		
+	}
 
 </script>
 </body>
