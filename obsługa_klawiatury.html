@@ -1,0 +1,18 @@
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+Skopjuj skrypt do pliku z rozszerzeniem html, i uruchom w przeglądarce internetowej (najlepiej Chrome).
+W menu po prawej stronie wybież ikonę 3 pionowo ułożone kropki i następnie opcję Więcej narzędzi->Narzędzia dla deweloperów.
+Przejdź do zakładki Console. Teraz kliknij w tekst na stronie po wciśnięciu klawisza powinieneś zobaczyć
+jego numer w konsoli.
+<script>
+    document.addEventListener("keydown",function(e){// funkcja oczekuje na wciśnięcie klawisza "keydown", puszczenie klawisza odczytuje funkcja "keyup"
+        let key = e.keyCode;  // pod e znajduje się wciśnięty klawisz aby zobaczyć znak trzeba wywołaćinstrukcję e.key aby zobaczyć numer instrukcję e.keyCode
+        console.log(e.key+" -> "+key); // wyświetlenie komunikatu w konsoli aby połączyć wartość zmiennej i tekst stosujemy znak + i tekst umieszczamy w cudzysłowach
+        })
+</script>
+</body>
+</html>
