@@ -1,0 +1,48 @@
+<html>
+<head>
+<style>
+.gracz{
+	position: absolute;
+	background-size: cover; /*wymuszenie dopasowania grafiki tła do rozmiaru bloku div gracza*/
+	width: 50px;
+	height: 44px;
+	background-color: blue;
+	/*background-image: url('ship.png'); tutaj możesz wczytać grafikę jako tło*/
+	bottom: 10%;
+	left: 45%;
+}
+</style>
+</head>
+<body>
+	<div class="gracz"></div>
+</div>
+<script>
+	const statek=document.querySelector(".gracz");
+  kierunek = {} // zadeklarowanie tablicy asocjacyjnej (słownik w python) w której dla podenej nazwy możemy przypisać wartość
+    document.addEventListener("keydown",function(e){// funkcja oczekuje na wciśnięcie klawisza strzałek w lewo lub w prawo
+        let key = e.keyCode;  // pod e znajduje się wciśnięty klawisz aby zobaczyć znak trzeba wywołać instrukcję e.key aby zobaczyć numer instrukcję e.keyCode
+        if(key===37){ //instrukcja if sprawdza czy numer wciśniętego klawisza to 37 (strzałka w lewo)
+            kierunek.lewo = true} // do tablicy asocjacyjnej dla komórki lewo przypisana zostaje wartość true
+        else if(key===39){	//zwróć uwagę że na poczatku tablica asocjacyjna jest pusta
+            kierunek.prawo = true}	// === - oznaczją poza sprawczeniem tej samej wartość równiez sprawdzenie typu zmiennej
+        //console.log(kierunek);
+        if(kierunek.lewo){ //sprawdzenie czy jest ruch w lewo
+          x = statek.offsetLeft-3; //odczytanie aktualnej pozycji x gracza i zmniejszenie jej o 3
+          statek.style.left = x+"px"; //ustawienie nowej pozycji gracza
+		  }
+        if(kierunek.prawo){ //sprawdzenie czy jest ruch w prawo
+          x = statek.offsetLeft+3; //odczytanie aktualnej pozycji x gracza i zwiększenie jej o 3
+          statek.style.left = x+"px"; //ustawienie nowej pozycji gracza
+		  }
+        })
+    document.addEventListener("keyup",function(e){// funkcja oczekuje na puszczenie klawisza strzałek w lewo lub w prawo
+        let key = e.keyCode;
+        if(key===37){
+            kierunek.lewo = false}
+        else if(key===39){
+            kierunek.prawo = false}
+        //console.log(kierunek);
+        })
+</script>
+</body>
+</html>
