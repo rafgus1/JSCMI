@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+Skopjuj skrypt do pliku z rozszerzeniem html, i uruchom w przeglądarce internetowej (najlepiej Chrome).
+W menu po prawej stronie wybież ikonę 3 pionowo ułożone kropki i następnie opcję Więcej narzędzi->Narzędzia dla deweloperów.
+Przejdź do zakładki Console. Teraz kliknij w tekst na stronie po wciśnięciu klawisza powinieneś zobaczyć
+jego numer w konsoli.
+<script>
+kierunek = {} // zadeklarowanie tablicy asocjacyjnej (słownik w python) w której dla podenej nazwy możemy przypisać wartość
+    document.addEventListener("keydown",function(e){// funkcja oczekuje na wciśnięcie klawisza strzałek w lewo lub w prawo
+        let key = e.keyCode;  // pod e znajduje się wciśnięty klawisz aby zobaczyć znak trzeba wywołać instrukcję e.key aby zobaczyć numer instrukcję e.keyCode
+        if(key===37){ //instrukcja if sprawdza czy numer wciśniętego klawisza to 37 (strzałka w lewo)
+            kierunek.lewo = true} // do tablicy asocjacyjnej dla komórki lewo przypisana zostaje wartość true
+        else if(key===39){	//zwróć uwagę że na poczatku tablica asocjacyjna jest pusta
+            kierunek.prawo = true}	// === - oznaczją poza sprawczeniem tej samej wartość równiez sprawdzenie typu zmiennej
+        console.log(kierunek);
+        })
+    document.addEventListener("keyup",function(e){// funkcja oczekuje na puszczenie klawisza strzałek w lewo lub w prawo
+        let key = e.keyCode;
+        if(key===37){
+            kierunek.lewo = false}
+        else if(key===39){
+            kierunek.prawo = false}
+        console.log(kierunek); //wypisanie w konsoli zawartości tablicy asocjacyjnej
+        })
+</script>
+</body>
+</html>
