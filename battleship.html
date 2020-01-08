@@ -1,56 +1,88 @@
 <html>
 <head>
 <style>
-body{
-	background-color: lightgreen;
-}
-.topBar{
-	background-color: darkgreen;
-	color: yellow;
-	font-size: 2em;
-}
-.kontener{
-	width: 80%;
-	height: 90%;
-	margin-left: 10%;
-	background-color: white;
-	overflow: hidden;
-}
-.przycisk{
-	background-color: red;
-	color: white;
-	font-size: 1.6em;
-	text-align: center;
-}
 .gracz{
 	position: absolute;
+	background-size: cover; 
 	width: 100px;
-	height: 20px;
-	background-color: blue;
+	height: 88px;
+	background-image: url('ship.png');
 	bottom: 10%;
 	left: 45%;
+}
+.strzal {
+	position: absolute;
+	background-color: green;
+	width: 10px;
+	height: 10px;
+	left: 0px;
+	top: 0px;
 }
 </style>
 </head>
 <body>
-
-<div class="topBar">Punkty: 0</div>
-<div class="kontener">
-	<div class="przycisk">Start Gry</div>
 	<div class="gracz"></div>
-</div>
-
+	<div class="strzal"></div>
 <script>
-	const topBar=document.querySelector(".topBar");
-	const kontener=document.querySelector(".kontener");
-	const przycisk=document.querySelector(".przycisk");
 	const statek=document.querySelector(".gracz");
-	let gracz = {
-		speed : 5,
-		strzal : false,
-		gameOver : false		
+	const strzal=document.querySelector(".strzal");
+	kierunek = {}
+	
+	let player = {
+		speed: 2 
 	}
+	
+    document.addEventListener("keydown",function(e){ 
+        let key = e.keyCode;  
+        if(key===37){ 
+            kierunek.lewo = true} 
+        else if(key===39){	
+            kierunek.prawo = true}
+			
+        if(key===38){ 
+            kierunek.gora = true} 
+        else if(key===40){	
+            kierunek.dol = true}
+		if(key===83){
+			strzal.style.top = (statek.offsetTop-10)+"px";
+			strzal.style.left = (statek.offsetLeft+45)+"px";
+		}
+		console.log(statek.style.top);
+    })
+		
+    document.addEventListener("keyup",function(e){// funkcja oczekuje na puszczenie klawisza strzałek w lewo lub w prawo
+        let key = e.keyCode;
+        if(key===37){
+            kierunek.lewo = false}
+        else if(key===39){
+            kierunek.prawo = false}
+		if(key===38){ 
+            kierunek.gora = false} 
+        else if(key===40){	
+            kierunek.dol = false}
+        })
 
+	function update(){
+        if(kierunek.gora){ 
+          y = statek.offsetTop - player.speed;
+          statek.style.top = y+"px";
+		  }
+		if(kierunek.dol){ 
+          y = statek.offsetTop + player.speed;
+          statek.style.top = y+"px";
+		  }	 
+        if(kierunek.lewo){ 
+          x = statek.offsetLeft - player.speed;
+          statek.style.left = x+"px";
+		  }
+        if(kierunek.prawo){
+          x = statek.offsetLeft+player.speed; 
+          statek.style.left = x+"px"; 
+		  }
+		player.animFrame = requestAnimationFrame(update);
+	}
+	
+	update();
 </script>
 </body>
 </html>
